@@ -1,0 +1,4 @@
+If:
+	PathExclude: [.*\.c, .*\.h]
+CompileFlags:
+	Add: [-std=c++20]

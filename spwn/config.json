@@ -1,0 +1,12 @@
+{
+	"debug_dir": "debug",
+	"script_file": "a.py",
+	"template_file": "~/.config/spwn/template.py",
+	"yara_rules": "~/.config/spwn/findcrypt3.rules",
+	"preanalysis_commands": [],
+	"postanalysis_commands": [],
+	"preanalysis_scripts": [],
+	"postanalysis_scripts": [],
+	"idafree_command": "ida {binary}",
+	"decompiler_command": "wine /opt/IDA_Pro_7.5/ida.exe {binary}"
+}
