@@ -14,3 +14,13 @@ pid
 vim9script
 libc
 qemu
+gdb
+tcache
+pwninit
+Unstrip
+seccomp
+config
+ROP
+configs
+Spwn
+cwe

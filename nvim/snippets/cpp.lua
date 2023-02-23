@@ -1,7 +1,9 @@
 return {
 	s("tests", {
-		t({"int T;", ""}),
-		t({"cin >> T;", ""}),
-		t({"while (T--) solve();"})
+		t({
+			"int T;",
+			"cin >> T;",
+			"while (T--) solve();"
+		})
 	})
 }
