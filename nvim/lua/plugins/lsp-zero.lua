@@ -65,7 +65,7 @@ return {
 			},
 			{
 				"<leader>ls",
-				"<Cmd>LspStop<CR>",
+				vim.diagnostic.disable,
 				mode = { "n", "v"}
 			},
 			{
