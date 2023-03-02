@@ -50,7 +50,8 @@ return {
 			vim.lsp.handlers["textDocument/definition"] = telescope.lsp_definitions
 			vim.lsp.handlers["textDocument/implementation"] = telescope.lsp_implementations
 
-			vim.diagnostic.config({ virtual_text = true })
+			-- vim.diagnostic.config({ virtual_text = true })
+			vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
 		end,
 		keys = {
 			{
