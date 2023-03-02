@@ -32,5 +32,17 @@ return {
 				mode = { "n", "v" }
 			}
 		}
+	},
+
+	{
+		"aaronhallaert/ts-advanced-git-search.nvim",
+		config = function()
+			require("telescope").load_extension("advanced_git_search")
+		end,
+		lazy = false,
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			"tpope/vim-fugitive",
+		},
 	}
 }
