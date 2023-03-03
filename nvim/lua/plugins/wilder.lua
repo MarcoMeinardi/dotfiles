@@ -51,19 +51,19 @@ return {
 				wilder.basic_highlighter(),
 			}
 
-			local popupmenu_palette_renderer = wilder.popupmenu_renderer(
-			wilder.popupmenu_palette_theme({
-				border = 'rounded',
-				empty_message = wilder.popupmenu_empty_message_with_spinner(),
-				highlighter = highlighters,
-				left = {
-					wilder.popupmenu_devicons(),
-					wilder.popupmenu_buffer_flags({
-						flags = ' a + ',
-						icons = {['+'] = '', a = '', h = ''},
-					}),
-				},
-			})
+			local popupmenu_border_theme = wilder.popupmenu_renderer(
+				wilder.popupmenu_border_theme({
+					border = 'rounded',
+					empty_message = wilder.popupmenu_empty_message_with_spinner(),
+					highlighter = highlighters,
+					left = {
+						wilder.popupmenu_devicons(),
+						wilder.popupmenu_buffer_flags({
+							flags = ' a + ',
+							icons = {['+'] = '', a = '', h = ''},
+						}),
+					},
+				})
 			)
 
 			local wildmenu_rendered = wilder.wildmenu_renderer({
@@ -71,7 +71,7 @@ return {
 			})
 
 			wilder.set_option('renderer', wilder.renderer_mux({
-				[':'] = popupmenu_palette_renderer,
+				[':'] = popupmenu_border_theme,
 				['/'] = wildmenu_rendered
 			}))
 		end
