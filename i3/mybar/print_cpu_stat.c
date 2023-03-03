@@ -43,6 +43,13 @@ void print_cpu_stat() {
 
 	// skip first line
 	if (fgets(buf, sizeof(buf), stat) == NULL) goto cpu_err;
+	sscanf(buf, "cpu %ld %ld %ld %ld",
+		&curr_total.user,
+		&curr_total.nice,
+		&curr_total.system,
+		&curr_total.idle
+	);
+	curr_total.total = curr_total.user + curr_total.nice + curr_total.system + curr_total.idle;
 
 	for (int i = 0; i < ncpus; i++) {
 		if (fgets(buf, sizeof(buf), stat) == NULL) goto cpu_err;
@@ -58,16 +65,6 @@ void print_cpu_stat() {
 		curr_cpus[i].total = curr_cpus[i].user + curr_cpus[i].nice + curr_cpus[i].system + curr_cpus[i].idle;
 	}
 	fclose(stat);
-
-	for (int i = 0; i < ncpus; i++) {
-		curr_total.user += curr_cpus[i].user;
-		curr_total.nice += curr_cpus[i].nice;
-		curr_total.system += curr_cpus[i].system;
-		curr_total.idle += curr_cpus[i].idle;
-		curr_total.total += curr_cpus[i].total;
-
-		curr_cpus[i].usage = calculate_usage(&curr_cpus[i], &prev_cpus[i]);
-	}
 
 	curr_total.usage = calculate_usage(&curr_total, &prev_total);	
 
