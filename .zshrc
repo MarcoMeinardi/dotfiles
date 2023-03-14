@@ -146,12 +146,6 @@ sys\t%S'
 
 bindkey -e
 
-vi() {
-	stty intr ^B
-	nvim $@
-	stty intr ^C
-}
-
 hvi() {
 	xset r off
 	vi $@
@@ -163,7 +157,7 @@ mk() {
         echo "$1.cpp exists"
     else
         cp ~/Documents/coding/base.cpp $1.cpp
-        vi $1.cpp -c "norm 34j"
+        vi $1.cpp -c "34j"
     fi
 }
 
