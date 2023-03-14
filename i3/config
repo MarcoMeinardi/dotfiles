@@ -301,5 +301,5 @@ hide_edge_borders vertical
 exec --no-startup-id xset r rate 200 60
 
 default_border pixel 1
-default_floating_border none
 for_window [class="terminal"] border normal
+
