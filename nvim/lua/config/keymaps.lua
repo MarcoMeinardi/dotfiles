@@ -29,6 +29,11 @@ map({"n", "v"}, "x", "\"_x", opts)
 map({"n", "v"}, "X", "\"_X", opts)
 map("n", "<C-]>", "<C-]>zz", { noremap = true })
 
+map("i", "<A-h>", "<Cmd>norm h<CR>", opts)
+map("i", "<A-j>", "<Cmd>norm j<CR>", opts)
+map("i", "<A-k>", "<Cmd>norm k<CR>", opts)
+map("i", "<A-l>", "<Cmd>norm l<CR>", opts)
+
 map({"n", "v"}, "<leader>sa", "<Esc>ggVG", opts)
 
 map("t", "<Esc>", vim.cmd.stopinsert, { noremap = true })
