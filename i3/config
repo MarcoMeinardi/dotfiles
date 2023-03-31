@@ -302,3 +302,7 @@ exec --no-startup-id xset r rate 200 60
 
 default_border pixel 1
 for_window [class="terminal"] border normal
+
+# Gaps
+gaps inner 15
+gaps outer 5
