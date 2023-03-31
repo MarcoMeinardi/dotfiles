@@ -11,5 +11,17 @@ return {
 				additional_vim_regex_highlighting = false,
 			}
 		}
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		lazy = false,
+		config = function()
+			require("treesitter-context").setup({
+				mode = "topline",
+				separator = "─"
+			})
+			vim.cmd("highlight clear TreesitterContext")
+		end
 	}
 }
