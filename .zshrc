@@ -147,6 +147,10 @@ sys\t%S'
 
 bindkey -e
 
+pcyclic() {
+	cyclic $@ | clipcopy
+}
+
 hvi() {
 	xset r off
 	vi $@
