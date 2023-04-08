@@ -1,0 +1,6 @@
+configuration {
+	matching: "fuzzy";
+	sort: true;
+}
+
+@theme "Arc-Dark-custom"
