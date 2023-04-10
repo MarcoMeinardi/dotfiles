@@ -17,6 +17,7 @@ void print_battery_status() {
 	for (
 		char line[0x100];
 		to_read > 0 && fgets(line, sizeof(line), battery_events);
+		to_read--
 	) {
 		if (status[0] == '\0' && strncmp(line + strlen("POWER_SUPPLY_"), "STATUS=", strlen("STATUS=")) == 0) {
 			strcpy(status, line + strlen("POWER_SUPPLY_STATUS="));
@@ -30,9 +31,9 @@ void print_battery_status() {
 		if (capacity == -1 && strncmp(line + strlen("POWER_SUPPLY_"), "CAPACITY=", strlen("CAPACITY=")) == 0) {
 			capacity = atoi(line + strlen("POWER_SUPPLY_CAPACITY="));
 		} else {
+			to_read++;
 			continue;
 		}
-		to_read--;
 	}
 	fclose(battery_events);
 

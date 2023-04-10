@@ -15,6 +15,7 @@ void print_used_memory() {
 	for(
 		char line[0x100];
 		to_read > 0 && fgets(line, sizeof(line), meminfo);
+		to_read--
 	) {
 		if (memtotal == -1UL && strncmp(line, "MemTotal:", strlen("MemTotal:")) == 0) {
 			memtotal = strtoul(line + strlen("MemTotal:"), NULL, 10);
@@ -40,9 +41,9 @@ void print_used_memory() {
 		if (memshared == -1UL && strncmp(line, "Shmem:", strlen("Shmem")) == 0) {
 			memshared = strtoul(line + strlen("Shmem:"), NULL, 10);
 		} else {
+			to_read++;
 			continue;
 		}
-		to_read--;
 	}
 	fclose(meminfo);
 
