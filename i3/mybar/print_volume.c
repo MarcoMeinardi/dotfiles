@@ -14,7 +14,6 @@ void print_volume() {
     snd_mixer_selem_id_t *sid;
     snd_mixer_elem_t *elem;
     long min, max, val;
-    const char *mixer_name;
     int force_linear = 0;
     int avg;
 	int pbval = 1;
@@ -45,8 +44,6 @@ void print_volume() {
 	}
 
 	if (res != 0) goto volume_err_late;
-	mixer_name = snd_mixer_selem_get_name(elem);
-	if (!mixer_name) goto volume_err_late;
 
 	if (force_linear || max - min <= MAX_LINEAR_DB_SCALE * 100) {
 		float avgf = ((float)(val - min) / (max - min)) * 100;
