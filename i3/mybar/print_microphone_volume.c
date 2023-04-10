@@ -23,7 +23,7 @@ void print_microphone_volume() {
 	if (snd_mixer_selem_register(mixer, NULL, NULL) < 0) goto volume_err;
 	if (snd_mixer_load(mixer) < 0) goto volume_err;
 
-	snd_mixer_selem_id_malloc(&sid);
+	snd_mixer_selem_id_alloca(&sid);
 	if (sid == NULL) {
 		snd_mixer_close(mixer);
 		goto volume_err;
@@ -77,15 +77,13 @@ void print_microphone_volume() {
 	}
 
 	snd_mixer_close(mixer);
-	snd_mixer_selem_id_free(sid);
 
 	return;
 
 volume_err_late:
 	snd_mixer_close(mixer);
-	snd_mixer_selem_id_free(sid);
 volume_err:
-	fprintf(stderr, "Mic: %s", strerror(errno));
+	fprintf(stderr, "Mic: %s\n", strerror(errno));
 	START_RED;
 	printf("Mic error");
 	END_COLOR;

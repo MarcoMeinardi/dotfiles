@@ -23,7 +23,7 @@ void print_volume() {
 	if (snd_mixer_selem_register(mixer, NULL, NULL) < 0) goto volume_err;
 	if (snd_mixer_load(mixer) < 0) goto volume_err;
 
-	snd_mixer_selem_id_malloc(&sid);
+	snd_mixer_selem_id_alloca(&sid);
 	if (sid == NULL) {
 		snd_mixer_close(mixer);
 		goto volume_err;
@@ -88,15 +88,13 @@ void print_volume() {
 	}
 
 	snd_mixer_close(mixer);
-	snd_mixer_selem_id_free(sid);
 
 	return;
 
 volume_err_late:
 	snd_mixer_close(mixer);
-	snd_mixer_selem_id_free(sid);
 volume_err:
-	fprintf(stderr, "Vol: %s", strerror(errno));
+	fprintf(stderr, "Vol: %s\n", strerror(errno));
 	START_RED;
 	printf("Vol error");
 	END_COLOR;
