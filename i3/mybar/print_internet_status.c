@@ -49,7 +49,7 @@ static void get_up_down() {
 	char interface[0x50];
 	unsigned long rbts, rpkts, rerrs, rdrop, rfifo, rframe, rcompressed, rmulticase;
 	unsigned long sbts, spkts, serrs, sdrop, sfifo, sframe, scompressed, smulticase;
-	unsigned long iw_dw, iw_up, eth_dw, eth_up;
+	unsigned long iw_dw = 0, iw_up = 0, eth_dw = 0, eth_up = 0;
 
 	while (fscanf(
 		proc_net_dev,
