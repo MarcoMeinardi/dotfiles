@@ -1,76 +1,93 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+#include <math.h>
 #include <errno.h>
+#include <alsa/asoundlib.h>
 #include "colors.h"
 
-static int mic_muted;
-static int mic_volume;
+void print_microphone_volume() {
+    const long MAX_LINEAR_DB_SCALE = 24;
+    snd_mixer_t *mixer;
+    snd_mixer_selem_id_t *sid;
+    snd_mixer_elem_t *elem;
+    long min, max, val;
+    int force_linear = 0;
+    int avg;
+	int pbval = 1;
 
-void update_microphone_volume() {
-	FILE* proc;
-	int result;
+	if (snd_mixer_open(&mixer, 0) < 0) goto volume_err;
+	if (snd_mixer_attach(mixer, "default") < 0) goto volume_err;
+	if (snd_mixer_selem_register(mixer, NULL, NULL) < 0) goto volume_err;
+	if (snd_mixer_load(mixer) < 0) goto volume_err;
 
-	// Check if muted
-	proc = popen("pactl get-source-mute @DEFAULT_SOURCE@", "r");
-	if (!proc) goto mic_err;
-
-	char buf[0x100];
-	result = fread(buf, sizeof(char), 7, proc);
-	pclose(proc);
-	if (result < 7) goto mic_err;
-
-	// Microrphone is muted
-	if (buf[6] == 'y') {
-		mic_muted = 1;
-		return;
-	} else {
-		mic_muted = 0;
+	snd_mixer_selem_id_malloc(&sid);
+	if (sid == NULL) {
+		snd_mixer_close(mixer);
+		goto volume_err;
 	}
 
-	// Get volume
-	proc = popen("pactl get-source-volume @DEFAULT_SOURCE@", "r");
-	if (!proc) goto mic_err;
+	snd_mixer_selem_id_set_index(sid, 0);
+	snd_mixer_selem_id_set_name(sid, "Capture");
 
-	result = fread(buf, 1, 0x100, proc);
-	pclose(proc);
-	if (result <= 0) goto mic_err;
+	elem = snd_mixer_find_selem(mixer, sid);
+	if (elem == NULL) goto volume_err_late;
 
-	char* volume_str = strchr(buf, '/');
-	if (volume_str == NULL) goto mic_err;
+	snd_mixer_handle_events(mixer);
+	int res = snd_mixer_selem_get_capture_dB_range(elem, &min, &max) || snd_mixer_selem_get_capture_dB(elem, 0, &val);
+	if (res || min >= max) {
+		res = snd_mixer_selem_get_capture_volume_range(elem, &min, &max);
+		res |= snd_mixer_selem_get_capture_volume(elem, 0, &val);
+		force_linear = 1;
+	}
 
-	while (*++volume_str && (*volume_str < '0' || *volume_str > '9'));
-	if (!*volume_str) goto mic_err;
-	
-	char* end_num = strchr(volume_str, ' ');
-	if (end_num != NULL) *end_num = '\0';
+	if (res != 0) goto volume_err_late;
 
-	mic_volume = atoi(volume_str);
+	if (force_linear || max - min <= MAX_LINEAR_DB_SCALE * 100) {
+		float avgf = ((float)(val - min) / (max - min)) * 100;
+		avg = (int)avgf;
+		avg = (avgf - avg < 0.5 ? avg : (avg + 1));
+	} else {
+		double normalized = exp10((val - max) / 6000.0);
+		if (min != SND_CTL_TLV_DB_GAIN_MUTE) {
+			double min_norm = exp10((min - max) / 6000.0);
+			normalized = (normalized - min_norm) / (1 - min_norm);
+		}
+		avg = lround(normalized * 100);
+	}
 
-	return;
+	if (snd_mixer_selem_get_capture_switch(elem, 0, &pbval) < 0) goto volume_err_late;
 
-mic_err:
-	fprintf(stderr, "Microphone: %s\n", strerror(errno));
-	mic_volume = -1;
-}
-
-void print_microphone_volume() {
-	update_microphone_volume();
-	if (mic_volume == -1) {
-		START_RED;
-		printf("Mic error");
-		END_COLOR;
-	} else if (mic_muted) {
+	if (pbval == 0) {
 		START_YELLOW;
 		printf("Mic muted");
 		END_COLOR;
 	} else {
-		if (mic_volume < 10) START_YELLOW;
-		else if (mic_volume >= 100) START_RED;
+		if (avg < 10) START_YELLOW;
+		else if (avg > 100) START_RED;
+		else if (avg == 100) START_YELLOW;
 		else START_WHITE;
 
-		printf("Mic %d%%", mic_volume);
+		printf("Vol ");
+		printf(" %d%%", avg);
 
 		END_COLOR;
 	}
+
+	snd_mixer_close(mixer);
+	snd_mixer_selem_id_free(sid);
+
+	return;
+
+volume_err_late:
+	snd_mixer_close(mixer);
+	snd_mixer_selem_id_free(sid);
+volume_err:
+	fprintf(stderr, "Mic: %s", strerror(errno));
+	START_RED;
+	printf("Mic error");
+	END_COLOR;
 }
+
