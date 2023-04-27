@@ -6,7 +6,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.codon/bin
+export PATH=$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -128,16 +131,15 @@ alias sl='sl | lolcat'
 alias exp='fzf --preview "bat --color=always {}"'
 
 alias cls='clear'
-alias sai='sudo apt install'
+alias sai='sudo pacman -S'
 alias dw='cd ~/Downloads'
 alias ds='cd ~/Desktop'
 alias myip='curl ifconfig.me; echo'
-alias RsaCtfTool='/opt/RsaCtfTool/RsaCtfTool.py'
 alias tmp='cd /tmp'
 alias tt='gio trash'
 alias py='python'
 alias ipy='ipython'
-alias cpfile='clipcopy'
+alias cpfile='xclip -selection clipboard'
 alias viconf='cd ~/.config/nvim; nvim .; cd - &> /dev/null'
 
 export TIMEFMT=$'
@@ -227,7 +229,7 @@ alias c='build_and_run gcc'
 # virtualenvwrapper settings:
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME=~/.virtualenvs
-export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenv
+export VIRTUALENVWRAPPER_SCRIPT=/home/marco/.local/bin/virtualenv
 source ~/.local/bin/virtualenvwrapper.sh
 
 # nvm things	

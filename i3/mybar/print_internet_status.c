@@ -12,7 +12,7 @@
 #include "colors.h"
 
 
-#define IW_INTERFACE "wlp2s0"
+#define IW_INTERFACE "wlan0"
 #define ETH_INTERFACE "enp1s0"
 
 static double prev_time;

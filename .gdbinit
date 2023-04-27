@@ -1,6 +1,5 @@
-source /opt/pwndbg/gdbinit.py
-set show-tips off
+source /usr/share/pwndbg/gdbinit.py
 # set resolve-heap-via-heuristic on
-source /opt/IDA_Pro_7.5/plugins/decomp2dbg/decomp2dbg.py
+source /home/marco/.local/lib/python3.10/site-packages/decomp2dbg/d2d.py
 
-# set debuginfod enabled on
+set debuginfod enabled on

@@ -63,6 +63,7 @@ void print_cpu_stat() {
 			goto cpu_err;
 		}
 		curr_cpus[i].total = curr_cpus[i].user + curr_cpus[i].nice + curr_cpus[i].system + curr_cpus[i].idle;
+		curr_cpus[i].usage = calculate_usage(&curr_cpus[i], &prev_cpus[i]);
 	}
 	fclose(stat);
 
@@ -104,7 +105,7 @@ void print_cpu_stat() {
 	printf("%ld%% ", curr_total.usage);
 	END_COLOR;
 
-	if (highest_cpu->usage >= 90) {
+	if (highest_cpu->usage >= 90 && curr_total.usage < 70) {
 		START_RED;
 		printf("%ld%% ", highest_cpu->usage);
 		END_COLOR;

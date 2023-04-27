@@ -31,7 +31,7 @@ return {
 				["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
 
-				["<M-Tab>"] = cmp.mapping(function()
+				["<C-Tab>"] = cmp.mapping(function()
 					vim.api.nvim_feedkeys(vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)), "n", true)
 				end)
 			})
@@ -50,8 +50,14 @@ return {
 			vim.lsp.handlers["textDocument/definition"] = telescope.lsp_definitions
 			vim.lsp.handlers["textDocument/implementation"] = telescope.lsp_implementations
 
-			-- vim.diagnostic.config({ virtual_text = true })
-			vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+			lsp.set_sign_icons({
+				error = '✘',
+				warn = '▲',
+				hint = '⚑',
+				info = '»'
+			})
+
+			vim.diagnostic.config({ virtual_text = true })
 		end,
 		keys = {
 			{

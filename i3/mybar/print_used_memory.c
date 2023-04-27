@@ -80,7 +80,7 @@ void print_used_memory() {
 	END_COLOR;
 
 	if (swapused >= 1024UL * 1024 * 1024) {
-		if (swapused >= 5UL * 1024 * 1024 * 1024 / 2) START_RED;
+		if (swapused >= 2UL * 1024 * 1024 * 1024) START_RED;
 		else START_WHITE;
 		printf(" Swap %.1F GiB", (double)swapused / 1024 / 1024 / 1024);
 		END_COLOR;

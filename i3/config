@@ -17,7 +17,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 10
+font pango:Source Code Pro 10
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -35,7 +35,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id nm-applet
 
 # Dark theme
-exec --no-startup-id /usr/libexec/gsd-xsettings
+exec --no-startup-id /usr/lib/gsd-xsettings
 
 exec --no-startup-id dunst
 
@@ -69,7 +69,7 @@ bindsym $mod+XF86AudioMicMute mode "microphone"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+space exec gnome-terminal --hide-menubar
+bindsym $mod+space exec gnome-terminal --hide-menubar -- tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -129,7 +129,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -191,10 +191,6 @@ bindsym $mod+Shift+r restart
 mode "resize" {
 	# These bindings trigger as soon as you enter the resize mode
 
-	# Pressing left will shrink the window’s width.
-	# Pressing right will grow the window’s width.
-	# Pressing up will shrink the window’s height.
-	# Pressing down will grow the window’s height.
 	# Pressing left will shrink the window’s width.
 	# Pressing right will grow the window’s width.
 	# Pressing up will shrink the window’s height.
@@ -301,7 +297,8 @@ hide_edge_borders vertical
 exec --no-startup-id xset r rate 200 60
 
 default_border pixel 1
-for_window [class="terminal"] border normal
+default_floating_border pixel 1
+# exec --no-startup-id xborders --config /home/marco/.config/xborders/config.json
 
 # Gaps
 gaps inner 15
