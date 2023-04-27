@@ -31,7 +31,7 @@ return {
 				["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
 
-				["<C-Tab>"] = cmp.mapping(function()
+				["<M-q>"] = cmp.mapping(function()
 					vim.api.nvim_feedkeys(vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)), "n", true)
 				end)
 			})
