@@ -38,6 +38,4 @@ map("i", "<A-l>", "<Cmd>norm l<CR>", opts)
 map({"n", "v"}, "<leader>sa", "<Esc>ggVG", opts)
 map("n", "<leader><leader>", "viw", opts)
 
-map("n", "<leader>n", vim.cmd.noh, opts)
-
 map("t", "<Esc>", vim.cmd.stopinsert, { noremap = true })

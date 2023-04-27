@@ -23,7 +23,7 @@ vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 
-vim.opt.listchars = { tab = " ->" }
+vim.opt.listchars = { tab = " ->", space = "·", eol = "↲" }
 vim.opt.list = true
 
 vim.wo.cursorline = true

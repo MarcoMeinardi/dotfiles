@@ -21,6 +21,7 @@ return {
 					hl.DiagnosticVirtualTextInfo = { bg = "none", fg = c.info }
 					hl.DiagnosticVirtualTextHint = { bg = "none", fg = c.hint }
 					hl.Whitespace = { fg = "#000000" }
+					hl.NonText = { fg = "#000000" }
 				end
 			})
 			vim.cmd.colorscheme("tokyonight")
