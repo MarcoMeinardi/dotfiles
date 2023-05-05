@@ -7,8 +7,8 @@ avoid = []
 filename = "{binary}"
 proj = angr.Project(filename, auto_load_libs=False)
 
-# chars = [claripy.BVS(f"c{{i}}", 8) for i in range(20)]
-# input_str = claripy.Concat(*chars, claripy.BVV(b"\n"))
+# input_str = claripy.BVS("input", 8 * 0x20)
+# chars = input_str.chop(8)
 # stdin_simfile = angr.SimFileStream(name="stdin", content=input_str, has_end=True)
 
 # args = [filename]
@@ -30,9 +30,14 @@ sim = proj.factory.simgr(initial_state)
 # sim.use_technique(angr.exploration_techniques.DFS())
 
 
+def drop_useless(state):
+	state.drop(stash="avoid")
+	state.drop(stash="deadended")
+
+
 def success(state):
 	current_output = state.posix.dumps(1)
-	return b"Good Job" in current_output
+	return b"Good job" in current_output
 
 
 def failure(state):
@@ -41,8 +46,8 @@ def failure(state):
 
 
 while sim.active:
-	# sim.explore(find=find, avoid=avoid, n=1)
-	sim.explore(find=success, avoid=failure, n=1)
+	# sim.explore(find=find, avoid=avoid, n=1)  # , step_func=drop_useless)
+	sim.explore(find=success, avoid=failure, n=1)  # , step_func=drop_useless)
 	print(sim)
 
 	if sim.found:
@@ -56,6 +61,4 @@ print(sim.found[0].posix.dumps(0))
 # 	if not isinstance(arg, claripy.ast.bv.BV):
 # 		print(arg)
 # 	else:
-# 		val = sim.found[0].solver.eval(arg)
-# 		byte_len = (val.bit_length() + 7) // 8
-# 		print(val.to_bytes(byte_len, "big"))
+# 		print(sim.found[0].solver.eval(arg, cast_to=bytes))
