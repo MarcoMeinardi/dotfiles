@@ -298,7 +298,6 @@ exec --no-startup-id xset r rate 200 60
 
 default_border pixel 1
 default_floating_border pixel 1
-# exec --no-startup-id xborders --config /home/marco/.config/xborders/config.json
 
 # Gaps
 gaps inner 15
