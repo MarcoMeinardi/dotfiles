@@ -25,6 +25,8 @@ return {
 			})
 
 			require("mini.move").setup()
+			vim.api.nvim_set_hl(0, "MiniIndentScopeSymbol", { fg = "#ff8c00" })
+			vim.api.nvim_set_hl(0, "MiniJump", { bold = true, fg = "none", bg = "none" })
 		end
 	}
 }

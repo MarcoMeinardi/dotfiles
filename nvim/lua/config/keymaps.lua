@@ -9,9 +9,6 @@ map("n", "<leader>ww", vim.cmd.w, { noremap = true })
 map("n", "<leader>q", vim.cmd.q, { noremap = true})
 map("n", "<leader>wq", vim.cmd.wq, { noremap = true })
 
-map({"n", "v"}, "<leader>fe", vim.cmd.Ex, { noremap = true })
-map({"n", "v"}, "<leader>rfe", vim.cmd.Rex, opts)
-
 map("n", "n", "nzz", { noremap = true })
 map("n", "N", "Nzz", { noremap = true })
 map({"n", "v"}, "<C-d>", "<C-d>zz", opts)
