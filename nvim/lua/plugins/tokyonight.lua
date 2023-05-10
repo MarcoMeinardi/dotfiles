@@ -20,6 +20,7 @@ return {
 					hl.DiagnosticVirtualTextWarn = { bg = "none", fg = c.warning }
 					hl.DiagnosticVirtualTextInfo = { bg = "none", fg = c.info }
 					hl.DiagnosticVirtualTextHint = { bg = "none", fg = c.hint }
+
 					hl.Whitespace = { fg = "#000000" }
 					hl.NonText = { fg = "#000000" }
 				end
