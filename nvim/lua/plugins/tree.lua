@@ -10,7 +10,13 @@ return {
 					},
 					open_file = {
 						quit_on_open = true
-					}
+					},
+				},
+				filters = {
+					dotfiles = false
+				},
+				git = {
+					ignore = false
 				}
 			})
 			vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })
