@@ -71,7 +71,9 @@ COMPLETION_WAITING_DOTS="true"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
-HISTSIZE=999999999
+export HISTSIZE=1000000000
+export SAVEHIST=$HISTSIZE
+setopt EXTENDED_HISTORY
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -131,7 +133,6 @@ alias sl='sl | lolcat'
 alias exp='fzf --preview "bat --color=always {}"'
 
 alias cls='clear'
-alias sai='sudo pacman -S'
 alias dw='cd ~/Downloads'
 alias ds='cd ~/Desktop'
 alias myip='curl ifconfig.me; echo'
