@@ -1,0 +1,30 @@
+diff --git a/scripts/notify.sh b/scripts/notify.sh
+index 2abca43..e37a39f 100755
+--- a/scripts/notify.sh
++++ b/scripts/notify.sh
+@@ -53,13 +53,9 @@ if [[ ! -f "$PID_FILE_PATH" ]]; then  # If pane not yet monitored
+   while true; do
+ 
+     # capture pane output
+-    output=$(tmux capture-pane -pt %"$PANE_ID")
+-
+-    # run tests to determine if work is done
+-    # if so, break and notify
+-    lc=$(echo "$output" | tail -c2)
+-    case $lc in
+-    "$" | "#" | "%")
++    output=$(tmux capture-pane -pt %"$PANE_ID" | grep -P '(\$|:|❯)\s?$')
++	
++    if [[ ! -z "$output" ]]; then
+       # tmux display-message "$@"
+       if [[ "$1" == "refocus" ]]; then
+         tmux switch -t \$"$SESSION_ID"
+@@ -74,7 +70,7 @@ if [[ ! -f "$PID_FILE_PATH" ]]; then  # If pane not yet monitored
+       # for eg, Xresources -> URxvt.urgentOnBell: true
+       tmux split-window "echo -e \"\a\" && exit"
+       break
+-    esac
++	fi
+ 
+     # Sleep for a given time
+     monitor_sleep_duration_value=$(get_tmux_option "$monitor_sleep_duration" "$monitor_sleep_duration_default")
