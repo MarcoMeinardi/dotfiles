@@ -148,7 +148,7 @@ wall\t%E
 cpu\t%U
 sys\t%S'
 
-bindkey -e
+bindkey -v
 
 pcyclic() {
 	cyclic $@ | clipcopy
