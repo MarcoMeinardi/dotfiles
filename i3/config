@@ -299,6 +299,10 @@ hide_edge_borders vertical
 # Key press repeat
 exec --no-startup-id xset r rate 200 60
 
+# No dark screen after timeout
+exec --no-startup-id xset s off
+exec --no-startup-id xset -dpms
+
 default_border pixel 1
 default_floating_border pixel 1
 
