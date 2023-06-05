@@ -11,8 +11,10 @@ export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.codon/bin
 export PATH=$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin
 
+export EDITOR=/bin/nvim
+
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="/usr/share/oh-my-zsh/"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -140,6 +142,7 @@ alias tmp='cd /tmp'
 alias tt='gio trash'
 alias py='python'
 alias ipy='ipython'
+alias vi='nvim'
 alias cpfile='xclip -selection clipboard'
 alias viconf='cd ~/.config/nvim; nvim .; cd - &> /dev/null'
 
