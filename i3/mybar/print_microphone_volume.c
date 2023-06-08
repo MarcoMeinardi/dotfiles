@@ -70,8 +70,7 @@ void print_microphone_volume() {
 		else if (avg == 100) START_YELLOW;
 		else START_WHITE;
 
-		printf("Vol ");
-		printf(" %d%%", avg);
+		printf("Mic %d%%", avg);
 
 		END_COLOR;
 	}
