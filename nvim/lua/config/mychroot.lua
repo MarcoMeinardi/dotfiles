@@ -1,5 +1,8 @@
 local my_chroot = function()
-	local path = vim.fn.expand("%:p")
+	local path = vim.fn.expand("#:p")
+	if path == "" then
+		path = vim.fn.expand("%:p:h")
+	end
 	local root_file = vim.fs.find({ ".git", ".root" }, { path = path, upward = true })[1]
 	if root_file then
 		local root_dir = vim.fs.dirname(root_file)
