@@ -261,12 +261,12 @@ bindsym $mod+Escape exec --no-startup-id i3lock -t --image /home/marco/Pictures/
 # Launcher shortcuts
 mode "launcher" {
 	bindsym f exec firefox, mode "default"
-	bindsym c exec zenity --calendar, mode "default"
 	bindsym n exec nautilus, mode "default"
 	bindsym s exec gnome-control-center, mode "default"
 	bindsym d exec discord, mode "default"
 	bindsym i exec ida, mode "default"
 	bindsym g exec ghidra, mode "default"
+	bindsym c exec gnome-terminal --working-directory=/home/marco/Downloads/ --hide-menubar -- tmux, mode "default"
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
