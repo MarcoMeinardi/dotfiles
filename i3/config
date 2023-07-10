@@ -309,5 +309,3 @@ default_floating_border pixel 1
 # Gaps
 gaps inner 15
 gaps outer 5
-
-for_window [class="view.gui.Main"] floating enable
