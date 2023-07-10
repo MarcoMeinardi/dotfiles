@@ -2,6 +2,7 @@ return {
 	{
 		"folke/todo-comments.nvim",
 		lazy = false,
+		event = "VeryLazy",
 		config = function()
 			vim.api.nvim_set_hl(0, "Todo", {})
 			require("todo-comments").setup({

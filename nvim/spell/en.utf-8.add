@@ -35,3 +35,8 @@ ECDSA
 VHDL
 #intetizzabilità
 sintetizzabilità
+syscalls
+syscall
+suid
+ELFs
+CTF

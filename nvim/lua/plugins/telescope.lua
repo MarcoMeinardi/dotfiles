@@ -65,6 +65,7 @@ return {
 			require("telescope").load_extension("advanced_git_search")
 		end,
 		lazy = false,
+		event = "VeryLazy",
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
 			"tpope/vim-fugitive",

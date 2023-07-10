@@ -1,7 +1,6 @@
 return {
 	{
-		"folke/neodev.nvim",
-		lazy = true
+		"folke/neodev.nvim"
 	},
 
 	{

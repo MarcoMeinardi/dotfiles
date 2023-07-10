@@ -2,6 +2,7 @@ return {
 	{
 		"echasnovski/mini.nvim",
 		lazy = false,
+		event = "VeryLazy",
 		config = function()
 			require("mini.comment").setup({
 				mappings = {

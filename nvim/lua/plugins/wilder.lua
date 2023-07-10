@@ -5,6 +5,7 @@ return {
 			"romgrk/fzy-lua-native"
 		},
 		lazy = false,
+		event = "VeryLazy",
 		config = function()
 			local wilder = require('wilder')
 			wilder.setup({modes = {':', '/', '?'}})
