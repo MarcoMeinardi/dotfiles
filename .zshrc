@@ -14,7 +14,7 @@ export PATH=$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin
 export EDITOR=/bin/nvim
 
 # Path to your oh-my-zsh installation.
-export ZSH="/usr/share/oh-my-zsh/"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
