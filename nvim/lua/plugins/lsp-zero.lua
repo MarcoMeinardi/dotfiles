@@ -61,11 +61,6 @@ return {
 		end,
 		keys = {
 			{
-				"<leader>fm",
-				vim.lsp.buf.code_action,
-				mode = { "n", "v"}
-			},
-			{
 				"<leader>rn",
 				vim.lsp.buf.rename,
 				mode = { "n", "v"}
