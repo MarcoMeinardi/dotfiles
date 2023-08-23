@@ -49,6 +49,7 @@ while sim.active:
 	# sim.explore(find=find, avoid=avoid, n=1)  # , step_func=drop_useless)
 	sim.explore(find=success, avoid=failure, n=1)  # , step_func=drop_useless)
 	print(sim)
+	# print(sim.active)
 
 	if sim.found:
 		break
