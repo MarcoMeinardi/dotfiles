@@ -8,6 +8,9 @@ return {
 				mappings = {
 					comment = "<leader>c",
 					comment_line = "<leader>c",
+				},
+				options = {
+					ignore_blank_line = true
 				}
 			})
 
