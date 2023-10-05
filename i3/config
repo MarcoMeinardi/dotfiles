@@ -303,6 +303,9 @@ exec --no-startup-id xset r rate 150 100
 exec --no-startup-id xset s off
 exec --no-startup-id xset -dpms
 
+exec --no-startup-id xmodmap -e "clear lock"
+exec --no-startup-id xmodmap -e "keysym Caps_Lock = Escape Caps_Lock NoSymbol NoSymbol"
+
 default_border pixel 1
 default_floating_border pixel 1
 
