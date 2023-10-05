@@ -242,7 +242,7 @@ alias c='build_and_run gcc'
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME=~/.virtualenvs
 export VIRTUALENVWRAPPER_SCRIPT=/home/marco/.local/bin/virtualenv
-source ~/.local/bin/virtualenvwrapper.sh
+source virtualenvwrapper.sh
 
 # nvm things	
 export NVM_DIR="$HOME/.nvm"
