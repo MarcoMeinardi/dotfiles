@@ -1,38 +1,49 @@
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = false
+local opt = vim.opt
 
-vim.opt.smartindent = true
-vim.opt.wrap = false
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
-
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
-
-vim.opt.termguicolors = true
-
-vim.opt.scrolloff = 8
-
+opt.confirm = true -- Confirm to save changes before exiting modified buffer
+opt.cursorline = true -- Enable highlighting of the current line
+opt.expandtab = false -- Use spaces instead of tabs
+opt.ignorecase = true -- Ignore case
+opt.inccommand = "split" -- preview incremental substitute
+vim.opt.list = true -- Show some invisible characters (tabs...
 vim.opt.listchars = { tab = " ->", space = "·", eol = "↲" }
-vim.opt.list = true
-
-vim.wo.cursorline = true
-
+opt.mouse = "a" -- Enable mouse mode
+opt.number = true -- Print line number
+opt.pumblend = 40 -- Popup blend
+opt.pumheight = 10 -- Maximum number of entries in a popup
+opt.relativenumber = true -- Relative line numbers
+opt.scrolloff = 8 -- Lines of context
+opt.sidescrolloff = 20 -- Columns of context
+opt.shiftround = true -- Round indent
+opt.shiftwidth = 4 -- Size of an indent
+opt.shortmess = "aoOWstTI"
+opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
+opt.smartcase = true -- Don't ignore case with capitals
+opt.smartindent = true -- Insert indents automatically
+opt.spelllang = { "en", "it" }
+opt.splitbelow = true -- Put new windows below current
+opt.splitkeep = "screen"
+opt.splitright = true -- Put new windows right of current
+opt.tabstop = 4 -- Number of spaces tabs count for
+opt.softtabstop = 4
+opt.termguicolors = true -- True color support
+opt.timeoutlen = 500
+opt.undofile = true
+opt.undodir = (os.getenv("HOME") or "") .. "/.vim/undodir"
+opt.swapfile = false
+opt.backup = false
+opt.undolevels = 10000
+opt.winminwidth = 5 -- Minimum window width
+opt.wrap = false -- Disable line wrap
+opt.hlsearch = true
+opt.incsearch = true
 
 vim.g.python3_host_prog = "/usr/bin/python3"
-
 vim.g.gutentags_ctags_tagfile = ".ctags"
 vim.g.gutentags_project_root = { ".git", ".root" }
 vim.g.gutentags_generate_on_empty_buffer = true
-
 vim.g.copilot_no_tab_map = true
+vim.g.loaded_perl_provider = 0

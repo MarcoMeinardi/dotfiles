@@ -1,5 +1,1 @@
-require("config.autocmds")
-require("config.keymaps")
-require("config.options")
-require("config.mychroot")
 require("config.lazy")

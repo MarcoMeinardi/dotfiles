@@ -1,38 +1,66 @@
-vim.g.mapleader = " "
+local Util = require("util")
 
-local opts = { noremap = true, silent = true }
-local map = vim.keymap.set
+local function map(mode, lhs, rhs, opts)
+	local keys = require("lazy.core.handler").handlers.keys
+	---@cast keys LazyKeysHandler
+	-- do not create the keymap if a lazy keys handler exists
+	if not keys.active[keys.parse({ lhs, mode = mode }).id] then
+		opts = opts or {}
+		opts.silent = opts.silent ~= false
+		if opts.remap and not vim.g.vscode then
+			opts.remap = nil
+		end
+		vim.keymap.set(mode, lhs, rhs, opts)
+	end
+end
 
-map({"n", "v", "i"}, "<C-c>", "<Esc>", opts)
+-- better up/down
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
-map("n", "<leader>ww", vim.cmd.w, { noremap = true })
-map("n", "<leader>q", vim.cmd.q, { noremap = true})
-map("n", "<leader>wq", vim.cmd.wq, { noremap = true })
+-- Clear search with <esc>
+map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
-map("n", "n", "nzz", { noremap = true })
-map("n", "N", "Nzz", { noremap = true })
-map({"n", "v"}, "<C-d>", "<C-d>zz", opts)
-map({"n", "v"}, "<C-u>", "<C-u>zz", opts)
-map("n", "<C-o>", "<C-o>zz", opts)
-map("n", "<C-i>", "<C-i>zz", opts)
+--keywordprg
+map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
+
+-- toggle options
+map("n", "<leader>tw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
+map("n", "<leader>td", Util.toggle_diagnostics, { desc = "Toggle Diagnostics" })
+if vim.lsp.inlay_hint then
+	map("n", "<leader>th", function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle Inlay Hints" })
+end
+
+map({"n", "v", "i"}, "<C-c>", "<Esc>")
+
+map("n", "<leader>ww", vim.cmd.w)
+map("n", "<leader>q", vim.cmd.q)
+map("n", "<leader>wq", vim.cmd.wq)
+
+map("n", "n", "nzz")
+map("n", "N", "Nzz")
+map({"n", "v"}, "<C-d>", "<C-d>zz")
+map({"n", "v"}, "<C-u>", "<C-u>zz")
+map("n", "<C-o>", "<C-o>zz")
+map("n", "<C-i>", "<C-i>zz")
 
 map({"n", "v"}, "<leader>y", "\"+y")
 map({"n", "v"}, "<leader>Y", "\"+Y")
 map("n", "<leader>yy", "\"+yy")
-map({"n", "v"}, "<leader>d", "\"_d", opts)
-map({"n", "v"}, "<leader>D", "\"_D", opts)
-map("n", "<leader>dd", "\"_dd", opts)
-map({"n", "v"}, "<leader>C", "\"_C", opts)
-map({"n", "v"}, "x", "\"_x", opts)
-map({"n", "v"}, "X", "\"_X", opts)
-map("n", "<C-]>", "<C-]>zz", { noremap = true })
+map({"n", "v"}, "<leader>d", "\"_d")
+map({"n", "v"}, "<leader>D", "\"_D")
+map("n", "<leader>dd", "\"_dd")
+map({"n", "v"}, "<leader>c", "\"_c")
+map({"n", "v"}, "<leader>C", "\"_C")
+map({"n", "v"}, "S", "\"_S")
+map({"n", "v"}, "s", "\"_s")
+map({"n", "v"}, "x", "\"_x")
+map({"n", "v"}, "X", "\"_X")
+map("n", "<C-]>", "<C-]>zz")
 
-map("i", "<A-h>", "<Cmd>norm h<CR>", opts)
-map("i", "<A-j>", "<Cmd>norm j<CR>", opts)
-map("i", "<A-k>", "<Cmd>norm k<CR>", opts)
-map("i", "<A-l>", "<Cmd>norm l<CR>", opts)
+map("i", "<A-h>", "<Cmd>norm h<CR>")
+map("i", "<A-j>", "<Cmd>norm j<CR>")
+map("i", "<A-k>", "<Cmd>norm k<CR>")
+map("i", "<A-l>", "<Cmd>norm l<CR>")
 
-map({"n", "v"}, "<leader>sa", "<Esc>ggVG", opts)
-map("n", "<leader><leader>", "viw", opts)
-
-map("t", "<Esc>", vim.cmd.stopinsert, { noremap = true })
+map({"n", "v"}, "<leader>sa", "<Esc>mmggVG")

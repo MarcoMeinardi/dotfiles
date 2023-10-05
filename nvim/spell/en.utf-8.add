@@ -40,3 +40,5 @@ syscall
 suid
 ELFs
 CTF
+writeup
+vim9
