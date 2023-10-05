@@ -102,12 +102,21 @@ return {
 				mode = { "n", "v" }
 			}
 		},
-		opts = {
-			defaults = {
-				prompt_prefix = " ",
-				selection_caret = " ",
-			}
-		}
+		config = function()
+			local telescope = require("telescope")
+			local actions = require("telescope.actions")
+			telescope.setup({
+				defaults = {
+					prompt_prefix = " ",
+					selection_caret = " ",
+					mappings = {
+						i = {
+							["<CR>"] = actions.select_default + actions.center,
+						},
+					},
+				},
+			})
+		end
 	},
 
 	-- git signs highlights text that has changed since the list
