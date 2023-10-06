@@ -17,7 +17,7 @@ return {
 			delete_check_events = "TextChanged"
 		},
 		keys = {
-			{ "<C-i>", function() require("luasnip").jump(1) end, mode = "i", desc = "Jump to next snippet entry" }
+			{ "<M-m>", function() require("luasnip").jump(1) end, mode = "i", desc = "Jump to next snippet entry" }
 		}
 	},
 
