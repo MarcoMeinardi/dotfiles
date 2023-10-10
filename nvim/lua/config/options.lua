@@ -40,6 +40,7 @@ opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 opt.hlsearch = true
 opt.incsearch = true
+opt.virtualedit = "block"
 
 vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.gutentags_ctags_tagfile = ".ctags"
