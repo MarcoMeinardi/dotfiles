@@ -8,7 +8,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:$HOME/.codon/bin
+export PATH=$PATH:$HOME/.ghcup/bin
 export PATH=$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin
 
 export EDITOR=/bin/nvim
