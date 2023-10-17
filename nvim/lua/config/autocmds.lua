@@ -67,3 +67,12 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt.expandtab = false
 	end
 })
+
+-- Haskell expandtab (I hato it, but compiler warnings are worse)
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("Haskell", {}),
+	pattern = { "haskell" },
+	callback = function()
+		vim.opt.expandtab = true
+	end
+})
