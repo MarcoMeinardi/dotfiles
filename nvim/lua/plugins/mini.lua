@@ -11,7 +11,8 @@ return {
 		opts = {
 			mappings = {
 				comment = "<leader>c",
-				comment_line = "<leader>c"
+				comment_line = "<leader>c",
+				comment_visual = "<leader>c"
 			},
 			options = {
 				ignore_blank_line = true
