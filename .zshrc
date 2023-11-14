@@ -147,6 +147,7 @@ alias vi='nvim'
 alias cpfile='xclip -selection clipboard'
 alias viconf='cd ~/.config/nvim; nvim .; cd - &> /dev/null'
 alias gef='sudo gdb -nx -x ~/.gdbinit-gef.py'
+alias reset='tput reset'
 
 export TIMEFMT=$'
 wall\t%E
