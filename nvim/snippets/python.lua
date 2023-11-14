@@ -43,7 +43,7 @@ return {
 			"avoid = []",
 			"",
 			"filename = \""}), i(1, "binary"), t({"\"",
-			"proj = angr.Project(filename, auto_load_libs=False)",
+			"proj = angr.Project(filename, auto_load_libs=False, main_opts={\"base_addr\": 0})",
 			"",
 			"# input_str = claripy.BVS(\"input\", 8 * 0x20)",
 			"# chars = input_str.chop(8)",
