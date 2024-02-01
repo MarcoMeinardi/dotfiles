@@ -160,16 +160,6 @@ sys\t%S'
 
 bindkey -v
 
-pcyclic() {
-	cyclic $@ | clipcopy
-}
-
-hvi() {
-	xset r off
-	vi $@
-	xset r rate 200 60
-}
-
 mk() {
     if [ -f $1.cpp ]; then
         echo "$1.cpp exists"
