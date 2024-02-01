@@ -131,7 +131,7 @@ source $ZSH/oh-my-zsh.sh
 alias ll='ls -AlhF'
 alias la='ls -A'
 alias l='ls -CF'
-alias sl='sl | lolcat'
+alias sl='sl -G -w'
 alias exp='fzf --preview "bat --color=always {}"'
 
 alias cls='clear'
