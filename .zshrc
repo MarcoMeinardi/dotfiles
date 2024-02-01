@@ -144,10 +144,14 @@ alias tt='gio trash'
 alias py='python'
 alias ipy='ipython'
 alias vi='nvim'
-alias cpfile='xclip -selection clipboard'
+alias cpsel='xclip -selection clipboard'
 alias viconf='cd ~/.config/nvim; nvim .; cd - &> /dev/null'
 alias gef='sudo gdb -nx -x ~/.gdbinit-gef.py'
 alias reset='tput reset'
+
+function cpfile() {
+	echo -n "file://$(realpath $1)" | xclip -selection clipboard -t text/uri-list
+}
 
 export TIMEFMT=$'
 wall\t%E
