@@ -283,6 +283,7 @@ bindsym $mod+x mode "launcher"
 mode "display" {
 	bindsym 1 exec --no-startup-id xrandr --output HDMI-1 --off --output eDP-1 --primary, mode "default"
 	bindsym 2 exec --no-startup-id xrandr --output HDMI-1 --primary --mode 1920x1080 --rate 74.99 --right-of eDP-1, mode "default"
+	bindsym 3 exec --no-startup-id xrandr --output HDMI-1 --mode 1920x1080 --rate 74.99 --same-as eDP-1, mode "default"
 
 	bindsym XF86Display mode "default"
 	bindsym $mod+m mode "default"
