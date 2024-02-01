@@ -69,7 +69,7 @@ bindsym $mod+XF86AudioMicMute mode "microphone"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+space exec gnome-terminal --hide-menubar -- tmux
+bindsym $mod+space exec kitty -- tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill
