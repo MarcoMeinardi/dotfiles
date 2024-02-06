@@ -213,8 +213,7 @@ return {
 	},
 
 	{
-		"ludovicchabant/vim-gutentags",
-		event = "BufEnter"
+		"ludovicchabant/vim-gutentags"
 	},
 
 	{
