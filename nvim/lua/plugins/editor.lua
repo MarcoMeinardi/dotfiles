@@ -18,13 +18,16 @@ return {
 			},
 			git = {
 				ignore = false
+			},
+			view = {
+				width = 50
 			}
 		},
 		keys = {
 			{
 				"<leader>fe",
-				function()
-					require("nvim-tree").open_replacing_current_buffer()
+				function ()
+					require("nvim-tree.api").tree.toggle()
 				end,
 				mode = { "n", "v" }
 			}
