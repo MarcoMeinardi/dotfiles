@@ -44,7 +44,7 @@ opt.virtualedit = "block"
 
 vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.gutentags_ctags_tagfile = ".ctags"
-vim.g.gutentags_project_root = { ".git", ".root" }
+vim.g.gutentags_project_root = { ".root" }
 vim.g.gutentags_generate_on_empty_buffer = true
 vim.g.copilot_no_tab_map = true
 vim.g.loaded_perl_provider = 0
