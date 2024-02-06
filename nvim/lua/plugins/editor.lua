@@ -423,5 +423,18 @@ return {
 		}
 	},
 
+	{
+		"jbyuki/nabla.nvim",
+		lazy = true,
+		keys = {
+			{
+				"<leader>pf",
+				function()
+					require("nabla").popup()
+				end
+			}
+		}
+	},
+
 	{ "LunarVim/bigfile.nvim" }
 }
