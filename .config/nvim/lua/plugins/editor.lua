@@ -117,7 +117,15 @@ return {
 							["<CR>"] = actions.select_default + actions.center,
 						},
 					},
+					file_ignore_patterns = { "node_modules", ".git" }
 				},
+				pickers = {
+					live_grep = {
+						additional_args = function(_)
+							return {"--hidden"}
+						end
+					}
+				}
 			})
 		end
 	},
