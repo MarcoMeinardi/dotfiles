@@ -317,7 +317,7 @@ default_border pixel 1
 default_floating_border pixel 1
 
 # Gaps
-gaps inner 15
-gaps outer 5
+gaps inner 1
+gaps outer 19
 
 for_window [class="discord"] move container to workspace 10
