@@ -243,7 +243,7 @@ exec --no-startup-id xinput set-prop "SYNA30AC:00 06CB:CDEB Touchpad" "libinput 
 # Set touchpad speed
 exec --no-startup-id xinput set-prop 'SYNA30AC:00 06CB:CDEB Touchpad' 'libinput Accel Speed' 0.2
 
-bindsym $mod+z exec --no-startup-id xset r rate 150 100 && xmodmap -e "clear lock" && xmodmap -e "keysym Caps_Lock = Escape Caps_Lock NoSymbol NoSymbol" && xinput set-prop "SYNA30AC:00 06CB:CDEB Touchpad" "libinput Accel Speed" 0.2 && xinput set-prop "SYNA30AC:00 06CB:CDEB Touchpad" "libinput Tapping Enabled" 1 && xinput set-prop "SYNA30AC:00 06CB:CDEB Touchpad" "libinput Natural Scrolling Enabled" 1
+bindsym $mod+z exec --no-startup-id xset r rate 150 100 && xinput set-prop "SYNA30AC:00 06CB:CDEB Touchpad" "libinput Accel Speed" 0.2 && xinput set-prop "SYNA30AC:00 06CB:CDEB Touchpad" "libinput Tapping Enabled" 1 && xinput set-prop "SYNA30AC:00 06CB:CDEB Touchpad" "libinput Natural Scrolling Enabled" 1
 
 # wallpaper
 exec --no-startup-id feh --bg-fill /home/marco/Pictures/wallpaper.png
@@ -308,9 +308,6 @@ exec --no-startup-id xset r rate 150 100
 # No dark screen after timeout
 exec --no-startup-id xset s off
 exec --no-startup-id xset -dpms
-
-exec --no-startup-id xmodmap -e "clear lock"
-exec --no-startup-id xmodmap -e "keysym Caps_Lock = Escape Caps_Lock NoSymbol NoSymbol"
 
 # clipboard tool
 exec --no-startup-id greenclip daemon>/dev/null
