@@ -241,11 +241,5 @@ export WORKON_HOME=~/.virtualenvs
 export VIRTUALENVWRAPPER_SCRIPT=/home/marco/.local/bin/virtualenv
 source virtualenvwrapper.sh
 
-# nvm things	
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# export NPM_CONFIG_PREFIX=/home/marco/.local/
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
