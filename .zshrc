@@ -148,6 +148,7 @@ alias cpsel='xclip -selection clipboard'
 alias viconf='cd ~/.config/nvim; nvim .; cd - &> /dev/null'
 alias gef='sudo gdb -nx -x ~/.gdbinit-gef.py'
 alias reset='tput reset'
+alias pastefile='cp `xclip -o -selection clipboard | cut -c 8-`'
 
 function cpfile() {
 	echo -n "file://$(realpath $1)" | xclip -selection clipboard -t text/uri-list
