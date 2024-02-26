@@ -294,8 +294,8 @@ bindsym $mod+m mode "display"
 bindsym XF86Display mode "display"
 
 
-bindsym Print exec --no-startup-id gnome-screenshot --area
-bindsym Shift+Print exec --no-startup-id gnome-screenshot
+bindsym Print exec --no-startup-id gnome-screenshot --area --file=/tmp/tmp-screenshot.png && echo -n "file:///tmp/tmp-screenshot.png" | xclip -selection clipboard -t text/uri-list
+bindsym Shift+Print exec --no-startup-id gnome-screenshot --file=/tmp/tmp-screenshot.png && echo -n "file:///tmp/tmp-screenshot.png" | xclip -selection clipboard -t text/uri-list
 
 bindsym $mod+t exec --no-startup-id /home/marco/.config/i3/toggle-keyboard/toggle-keyboard.sh
 exec --no-startup-id setxkbmap us
