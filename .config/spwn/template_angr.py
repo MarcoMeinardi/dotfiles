@@ -40,8 +40,9 @@ initial_state = proj.factory.entry_state(
 # 	initial_state.solver.add(claripy.Or(c == 0x0, claripy.And(c >= 0x20, c <= 0x7e)))
 # 	initial_state.solver.add(c >= 0x20, c <= 0x7e)
 
-# proj.hook_symbol("__isoc99_scanf", angr.procedures.stubs.Nop.Nop())
-# proj.hook_symbol("atoi", angr.procedures.stubs.ReturnUnconstrained.ReturnUnconstrained())
+# proj.hook(0x1337, angr.SIM_PROCEDURES["libc"]["puts"]())
+# proj.hook_symbol("__isoc99_scanf", angr.SIM_PROCEDURES["stubs"]["Nop"]())
+# proj.hook_symbol("atoi", angr.SIM_PROCEDURES["stubs"]["ReturnUnconstrained"]())
 # for desc, v in state.solver.get_variables("api"): ...
 
 # initial_state.globals["randind"] = 0
@@ -69,6 +70,7 @@ initial_state = proj.factory.entry_state(
 
 sim = proj.factory.simgr(initial_state)
 # sim.use_technique(angr.exploration_techniques.DFS())
+# sim.use_technique(angr.exploration_techniques.manual_mergepoint.ManualMergepoint(0xdeadbeef))
 
 
 def success(state):
@@ -77,15 +79,19 @@ def success(state):
 	# state.solver.add(...)
 	# return state.satisfiable()
 
-
 def failure(state):
 	current_output = state.posix.dumps(1)
 	return b"Try again" in current_output
 
+def drop_useless(state):
+	state.drop(stash="avoid")
+	state.drop(stash="deadended")
+	state.drop(stash="unsat")
+
 
 while sim.active:
-	# sim.explore(find=find, avoid=avoid, n=1)  # , auto_drop=["avoid", "unsat", "deadended"])
-	sim.explore(find=success, avoid=failure, n=1)  # , auto_drop=["avoid", "unsat", "deadended"])
+	# sim.explore(find=find, avoid=avoid, n=1)  # , step_func=drop_useless)
+	sim.explore(find=success, avoid=failure, n=1)  # , step_func=drop_useless)
 	print(sim)
 	# print(sim.active)
 
