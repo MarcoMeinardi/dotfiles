@@ -4,10 +4,13 @@
 #include <errno.h>
 #include "colors.h"
 
+static int prev_capacity = -1;
+
 void print_battery_status() {
 	int to_read = 2;
 	int capacity = -1;
 	char status[0x100];
+	char command[0x100];
 	status[0] = '\0';
 
 	FILE* battery_events = fopen("/sys/class/power_supply/BAT0/uevent", "r");
@@ -46,12 +49,20 @@ void print_battery_status() {
 
 	if (strcmp(status, "Discharging") == 0) {
 		printf("BAT %d%%", capacity);
+		if (prev_capacity != capacity) {
+			prev_capacity = capacity;
+			if (capacity <= 10) {
+				sprintf(command, "notify-send --urgency=critical --expire-time=10000 'Low battery: %d%%'", capacity);
+				system(command);
+			}
+		}
 	} else if (strcmp(status, "Full") == 0) {
 		printf("FULL %d%%", capacity);
 	} else {
 		printf("CHR %d%%", capacity);  // My computer is stupid and doesn't understand charging
 	}
 	END_COLOR;
+	prev_capacity = capacity;
 
 	return;
 
