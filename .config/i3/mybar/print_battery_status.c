@@ -4,7 +4,14 @@
 #include <errno.h>
 #include "colors.h"
 
+enum {
+	UNKNOWN,
+	DISCHARGING,
+	FULL
+};
+
 static int prev_capacity = -1;
+static int prev_status = UNKNOWN;
 
 void print_battery_status() {
 	int to_read = 2;
@@ -47,22 +54,24 @@ void print_battery_status() {
 	else if (capacity <= 20) START_YELLOW;
 	else START_WHITE;
 
-	if (strcmp(status, "Discharging") == 0) {
+	int status_id = strcmp(status, "Discharging") == 0 ? DISCHARGING : strcmp(status, "Full") == 0 ? FULL : UNKNOWN;
+	if (status_id == DISCHARGING) {
 		printf("BAT %d%%", capacity);
-		if (prev_capacity != capacity) {
+		if (prev_capacity != capacity || prev_status != status_id) {
 			prev_capacity = capacity;
-			if (capacity <= 10) {
+			if (capacity <= 10 && status_id == DISCHARGING) {
 				sprintf(command, "notify-send --urgency=critical --expire-time=10000 'Low battery: %d%%'", capacity);
 				system(command);
 			}
 		}
-	} else if (strcmp(status, "Full") == 0) {
+	} else if (status_id == FULL) {
 		printf("FULL %d%%", capacity);
 	} else {
 		printf("CHR %d%%", capacity);  // My computer is stupid and doesn't understand charging
 	}
 	END_COLOR;
 	prev_capacity = capacity;
+	prev_status = status_id;
 
 	return;
 
