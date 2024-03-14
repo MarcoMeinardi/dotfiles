@@ -117,7 +117,7 @@ return {
 							["<CR>"] = actions.select_default + actions.center,
 						},
 					},
-					file_ignore_patterns = { "node_modules", ".git" }
+					file_ignore_patterns = { "node_modules", ".git", ".ctags" }
 				},
 				pickers = {
 					live_grep = {
