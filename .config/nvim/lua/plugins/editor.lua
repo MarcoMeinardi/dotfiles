@@ -49,8 +49,8 @@ return {
 			{ "<leader>:", Util.telescope("command_history"), desc = "Command History", mode = { "n", "v" } },
 			-- find
 			{ "<leader>fb", Util.telescope("buffers"), desc = "Buffers", mode = { "n", "v" } },
-			{ "<leader>fF", Util.telescope("files"), desc = "Find Files (cwd)", mode = { "n", "v" } },
-			{ "<leader>ff", Util.telescope("files", { cwd = false }), desc = "Find Files (root dir)", mode = { "n", "v"} },
+			{ "<leader>fF", Util.telescope("find_files"), desc = "Find Files (cwd)", mode = { "n", "v" } },
+			{ "<leader>ff", Util.telescope("find_files", { cwd = false }), desc = "Find Files (root dir)", mode = { "n", "v"} },
 			{ "<leader>fr", Util.telescope("oldfiles"), desc = "Recent", mode = { "n", "v" } },
 			-- git
 			{ "<leader>gc", Util.telescope("git_commits"), desc = "commits" },
@@ -122,8 +122,13 @@ return {
 				pickers = {
 					live_grep = {
 						additional_args = function(_)
-							return {"--hidden"}
+							return {"--hidden", "--no-ignore"}
 						end
+					},
+					find_files = {
+						hidden = true,
+						no_ignore = true,
+						no_ignore_parent = true
 					}
 				}
 			})

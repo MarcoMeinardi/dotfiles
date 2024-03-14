@@ -81,14 +81,14 @@ function M.telescope(builtin, opts)
 			opts = { default_text = M.get_selected_text() }
 		end
 		opts = vim.tbl_deep_extend("force", { cwd = M.get_root() }, opts)
-		if builtin == "files" then
-			if vim.loop.fs_stat((opts.cwd or vim.loop.cwd()) .. "/.git") then
-				opts.show_untracked = true
-				builtin = "git_files"
-			else
-				builtin = "find_files"
-			end
-		end
+		-- if builtin == "files" then
+		-- 	if vim.loop.fs_stat((opts.cwd or vim.loop.cwd()) .. "/.git") then
+		-- 		opts.show_untracked = true
+		-- 		builtin = "git_files"
+		-- 	else
+		-- 		builtin = "find_files"
+		-- 	end
+		-- end
 
 		require("telescope.builtin")[builtin](opts)
 	end
