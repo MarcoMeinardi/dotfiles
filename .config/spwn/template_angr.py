@@ -21,15 +21,15 @@ proj = angr.Project(filename, auto_load_libs=False, main_opts={{"base_addr": 0}}
 initial_state = proj.factory.entry_state(
 	# stdin=stdin_simfile,
 	# args=args,
-	# add_options={{
+	add_options={{
 		# angr.options.ZERO_FILL_UNCONSTRAINED_REGISTERS,
 		# angr.options.ZERO_FILL_UNCONSTRAINED_MEMORY,
-		# angr.options.DOWNSIZE_Z3,
-		# angr.options.SIMPLIFY_CONSTRAINTS,
-		# angr.options.SIMPLIFY_EXPRS,
+		angr.options.DOWNSIZE_Z3,
+		angr.options.SIMPLIFY_CONSTRAINTS,
+		angr.options.SIMPLIFY_EXPRS,
 		# angr.options.LAZY_SOLVES,
 		# angr.options.SUPPORT_FLOATING_POINT
-	# }}
+	}}
 )
 
 # initial_state.memory.read_strategies = [angr.concretization_strategies.SimConcretizationStrategyRange(1 << 64)]
