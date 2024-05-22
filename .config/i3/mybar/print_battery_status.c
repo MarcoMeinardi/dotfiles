@@ -59,7 +59,7 @@ void print_battery_status() {
 		printf("BAT %d%%", capacity);
 		if (prev_capacity != capacity || prev_status != status_id) {
 			prev_capacity = capacity;
-			if (capacity <= 10 && status_id == DISCHARGING) {
+			if (capacity <= 10) {
 				sprintf(command, "notify-send --urgency=critical --expire-time=10000 'Low battery: %d%%'", capacity);
 				system(command);
 			}
