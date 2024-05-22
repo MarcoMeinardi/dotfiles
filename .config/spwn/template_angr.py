@@ -28,6 +28,7 @@ initial_state = proj.factory.entry_state(
 		angr.options.SIMPLIFY_CONSTRAINTS,
 		angr.options.SIMPLIFY_EXPRS,
 		# angr.options.LAZY_SOLVES,
+		# angr.options.UNICORN,
 		# angr.options.SUPPORT_FLOATING_POINT
 	}}
 )
