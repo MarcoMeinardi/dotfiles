@@ -24,6 +24,8 @@ return {
 
 				hl.Whitespace = { fg = "#000000" }
 				hl.NonText = { fg = "#000000" }
+
+				hl.CursorLineNR = hl.LineNr
 			end
 		}
 	}
