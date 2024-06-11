@@ -53,6 +53,9 @@ map({"n", "v"}, "x", "\"_x")
 map({"n", "v"}, "X", "\"_X")
 map("n", "<C-]>", "<C-]>zz")
 
+map("n", "<leader>c", "gcc", { remap = true })
+map("v", "<leader>c", "gc", { remap = true })
+
 map("i", "<A-h>", "<Cmd>norm h<CR>")
 map("i", "<A-j>", "<Cmd>norm j<CR>")
 map("i", "<A-k>", "<Cmd>norm k<CR>")

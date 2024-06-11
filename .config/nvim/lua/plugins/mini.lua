@@ -6,21 +6,6 @@ return {
 	},
 
 	{
-		"echasnovski/mini.comment",
-		event = "VeryLazy",
-		opts = {
-			mappings = {
-				comment = "<leader>c",
-				comment_line = "<leader>c",
-				comment_visual = "<leader>c"
-			},
-			options = {
-				ignore_blank_line = true
-			}
-		}
-	},
-
-	{
 		"echasnovski/mini.move",
 		event = "VeryLazy",
 		config = true
