@@ -255,6 +255,7 @@ mode "state" {
 	bindsym e exec --no-startup-id i3-msg exit, mode "default"
 	bindsym l exec --no-startup-id i3lock -t --image /home/marco/Pictures/wallpaper.png, mode "default"
 	bindsym s exec --no-startup-id i3lock -t --image /home/marco/Pictures/wallpaper.png && systemctl suspend, mode "default"
+	bindsym p exec --no-startup-id /home/marco/.config/i3/scripts/toggle-powermode, mode "default"
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
@@ -296,8 +297,7 @@ bindsym Print exec --no-startup-id maim --select --hidecursor | xclip -selection
 bindsym Shift+Print exec --no-startup-id maim --hidecursor | xclip -selection clipboard -t image/png
 bindsym Ctrl+Print exec --no-startup-id maim --window $(xdotool getactivewindow) --hidecursor | xclip -selection clipboard -t image/png
 
-bindsym $mod+t exec --no-startup-id /home/marco/.config/i3/toggle-keyboard/toggle-keyboard.sh
-exec --no-startup-id setxkbmap us
+bindsym $mod+t exec --no-startup-id /home/marco/.config/i3/scripts/toggle-keyboard.sh
 
 hide_edge_borders vertical
 
