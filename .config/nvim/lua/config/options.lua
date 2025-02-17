@@ -12,7 +12,7 @@ vim.opt.list = true -- Show some invisible characters (tabs...
 vim.opt.listchars = { tab = " ->", space = "·", eol = "↲" }
 opt.mouse = "a" -- Enable mouse mode
 opt.number = true -- Print line number
-opt.pumblend = 40 -- Popup blend
+opt.pumblend = 20 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.relativenumber = true -- Relative line numbers
 opt.scrolloff = 8 -- Lines of context
