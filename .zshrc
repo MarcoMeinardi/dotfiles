@@ -153,7 +153,6 @@ alias viconf='cd ~/.config/nvim; nvim .; cd - &> /dev/null'
 alias gef='sudo gdb -nx -x ~/.gdbinit-gef.py'
 alias reset='tput reset'
 alias pasteimg='xclip -o -selection clipboard'
-alias neofetch='neofetch --kitty /home/marco/Pictures/arch.png'
 alias cal='cal -y -m'
 
 function cpfile() {
