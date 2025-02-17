@@ -45,17 +45,12 @@ vim.api.nvim_create_autocmd("FileType", {
 	end
 })
 
--- C/C++ comment, compile and run
+-- C/C++/Rust comment
 vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("C/C++", {}),
-	pattern = { "c", "cpp" },
+	group = vim.api.nvim_create_augroup("C/C++/Rust", {}),
+	pattern = { "c", "cpp", "rust" },
 	callback = function()
 		vim.bo.commentstring = "// %s"
-
-		vim.keymap.set("n", "<leader>gcc", "<Cmd>w<CR><Cmd>!gcc -o main % -Wall -Wextra -g3 -fsanitize=signed-integer-overflow -fsanitize=address<CR>", { noremap = true })
-		vim.keymap.set("n", "<leader>gcr", "<Cmd>w<CR><Cmd>!gcc -o main % -Wall -Wextra -g3 -fsanitize=signed-integer-overflow -fsanitize=address && ./main<CR>", { noremap = true })
-		vim.keymap.set("n", "<leader>gpp", "<Cmd>w<CR><Cmd>!g++ -o main % -Wall -Wextra -g3 -std=c++20 -fsanitize=signed-integer-overflow -fsanitize=address<CR>", { noremap = true })
-		vim.keymap.set("n", "<leader>gpr", "<Cmd>w<CR><Cmd>!g++ -o main % -Wall -Wextra -g3 -std=c++20 -fsanitize=signed-integer-overflow -fsanitize=address && ./main<CR>", { noremap = true })
 	end
 })
 
