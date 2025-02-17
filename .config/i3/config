@@ -320,3 +320,6 @@ gaps inner 1
 gaps outer 19
 
 for_window [class="discord"] move container to workspace 10
+
+bindsym $mod+g exec --no-startup-id echo -ne '≫℘' | xclip -selection clipboard
+bindsym $mod+b exec --no-startup-id echo -ne '█' | xclip -selection clipboard
