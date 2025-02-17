@@ -10,7 +10,7 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.ghcup/bin
 export PATH=$PATH:$HOME/go/bin
-export PATH=$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin
+export PATH=$PATH:$HOME/.local/share/gem/ruby/3.3.0/bin
 
 export MAKEFLAGS='-j6'
 
