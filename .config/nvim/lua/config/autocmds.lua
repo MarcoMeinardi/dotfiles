@@ -71,3 +71,13 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt.expandtab = true
 	end
 })
+
+-- gsls filetype
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	group = vim.api.nvim_create_augroup("GSLS", {}),
+	pattern = { "*.vert", "*.frag" },
+	callback = function()
+		vim.bo.filetype = "glsl"
+		vim.bo.syntax = "c"
+	end
+})
