@@ -179,7 +179,7 @@ mk() {
 fastswap() {
 	sudo swapoff /swapfile 2> /dev/null
 	sudo rm /swapfile 2> /dev/null
-	sudo btrfs filesystem mkswapfile --size ${1}G /swapfile && sudo swapon /swapfile
+	sudo mkswap -U clear --size ${1}G --file /swapfile && sudo swapon /swapfile
 }
 
 build_and_run() {
