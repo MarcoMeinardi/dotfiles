@@ -449,5 +449,10 @@ return {
 		}
 	},
 
-	{ "LunarVim/bigfile.nvim" }
+	{ "LunarVim/bigfile.nvim" },
+
+	{
+		"meznaric/key-analyzer.nvim",
+		opts = {}
+	}
 }
