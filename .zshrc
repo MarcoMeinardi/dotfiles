@@ -89,18 +89,19 @@ setopt EXTENDED_HISTORY
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    autojump
-    colored-man-pages
-    command-not-found
-    dirhistory
-    docker
-    docker-compose
-    fzf
-    pip
-    virtualenv
-    virtualenvwrapper
-    zsh-autosuggestions
-    zsh-syntax-highlighting
+	autojump
+	colored-man-pages
+	command-not-found
+	dirhistory
+	docker
+	docker-compose
+	extract
+	fzf
+	pip
+	virtualenv
+	virtualenvwrapper
+	zsh-autosuggestions
+	zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
