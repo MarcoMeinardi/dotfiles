@@ -1,6 +1,7 @@
 configuration {
 	matching: "fuzzy";
 	sort: true;
+	font: "Source Code Pro 12";
 }
 
 @theme "Arc-Dark-custom"
