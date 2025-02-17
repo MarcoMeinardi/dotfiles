@@ -154,6 +154,7 @@ alias gef='sudo gdb -nx -x ~/.gdbinit-gef.py'
 alias reset='tput reset'
 alias pasteimg='xclip -o -selection clipboard'
 alias cal='cal -y -m'
+alias tssh='kitten ssh'
 
 function cpfile() {
 	echo -n "file://$(realpath $1)" | xclip -selection clipboard -t text/uri-list
