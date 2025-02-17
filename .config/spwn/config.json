@@ -11,6 +11,6 @@
 	"postanalysis_commands": [],
 	"preanalysis_scripts": [],
 	"postanalysis_scripts": [],
-	"idafree_command": "ida {binary}",
-	"decompiler_command": "wine /opt/IDA_Pro_7.5/ida.exe {binary}"
+	"idafree_command": "/opt/ida9.0/ida64 {binary} 2> /dev/null",
+	"decompiler_command": "/opt/ida9.0/ida64 {binary} 2> /dev/null"
 }
