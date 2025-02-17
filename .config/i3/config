@@ -250,7 +250,7 @@ exec --no-startup-id feh --bg-fill /home/marco/Pictures/wallpaper.png
 
 # State shortcuts
 mode "state" {
-	bindsym h exec --no-startup-id shutdown -h now, mode "default"
+	bindsym h exec --no-startup-id shutdown now, mode "default"
 	bindsym r exec --no-startup-id reboot, mode "default"
 	bindsym e exec --no-startup-id i3-msg exit, mode "default"
 	bindsym l exec --no-startup-id i3lock -t --image /home/marco/Pictures/wallpaper.png, mode "default"
