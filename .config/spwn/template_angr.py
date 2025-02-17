@@ -9,8 +9,11 @@ LE = archinfo.Endness.LE  # state.memory.store(addr, value, endness=LE)
 find = []
 avoid = []
 
+find_str = b"Good job"
+avoid_str = b"Try again"
+
 filename = "{binary}"
-proj = angr.Project(filename, auto_load_libs=False, main_opts={{"base_addr": 0}})
+proj = angr.Project(filename, auto_load_libs=False, main_opts={{"base_addr": 0}})  # , selfmodifying_code=True)
 
 # input_str = claripy.BVS("input", 8 * 0x20)
 # chars = input_str.chop(8)
@@ -24,9 +27,9 @@ initial_state = proj.factory.entry_state(
 	add_options={{
 		# angr.options.ZERO_FILL_UNCONSTRAINED_REGISTERS,
 		# angr.options.ZERO_FILL_UNCONSTRAINED_MEMORY,
-		angr.options.DOWNSIZE_Z3,
-		angr.options.SIMPLIFY_CONSTRAINTS,
-		angr.options.SIMPLIFY_EXPRS,
+		# angr.options.DOWNSIZE_Z3,
+		# angr.options.SIMPLIFY_CONSTRAINTS,
+		# angr.options.SIMPLIFY_EXPRS,
 		# angr.options.LAZY_SOLVES,
 		# angr.options.UNICORN,
 		# angr.options.SUPPORT_FLOATING_POINT
@@ -76,13 +79,13 @@ sim = proj.factory.simgr(initial_state)
 
 def success(state):
 	current_output = state.posix.dumps(1)
-	return b"Good job" in current_output
+	return find_str in current_output
 	# state.solver.add(...)
 	# return state.satisfiable()
 
 def failure(state):
 	current_output = state.posix.dumps(1)
-	return b"Try again" in current_output
+	return avoid_str in current_output
 
 def drop_useless(state):
 	state.drop(stash="avoid")
